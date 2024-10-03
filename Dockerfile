@@ -1,4 +1,4 @@
-FROM quay.io/mittwald/kube-httpcache:v0.8.0 AS builder
+FROM quay.io/mittwald/kube-httpcache:v0.8.1 AS builder
 
 ENV VARNISH_VERSION=73
 ENV VARNISH_VERSION_DOT=7.3
@@ -23,7 +23,7 @@ RUN ./bootstrap && \
     make check -j 4 && \
     make install
 
-FROM quay.io/mittwald/kube-httpcache:v0.8.0 AS final
+FROM quay.io/mittwald/kube-httpcache:v0.8.1 AS final
 
 COPY --from=builder /usr/lib/varnish/vmods/ /usr/lib/varnish/vmods/
 
